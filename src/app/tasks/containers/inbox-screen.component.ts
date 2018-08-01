@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { TasksState, ArchiveTask, PinTask } from '../state/task.state';
-import { Task } from '../task.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,13 +20,12 @@ import { Observable } from 'rxjs';
           <span class="title-wrapper">Taskbox</span>
         </h1>
       </nav>
-      <task-list [tasks]="tasks$ | async" (onArchiveTask)="archiveTask($event)" (onPinTask)="pinTask($event)"></task-list>
+      <connected-task-list></connected-task-list>
     </div>
   `,
 })
 export class InboxScreenComponent implements OnInit {
   @Select(TasksState.getError) error$: Observable<any>;
-  @Select(TasksState.getAllTasks) tasks$: Observable<Task[]>;
 
   constructor(private store: Store) {}
 

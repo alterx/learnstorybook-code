@@ -25,7 +25,7 @@ const props = {
   onArchiveTask: actions.onArchiveTask,
 };
 
-storiesOf('TaskList', module)
+storiesOf('PureTaskList', module)
   .addDecorator(
     moduleMetadata({
       declarations: [TaskListComponent, TaskComponent],
